@@ -1,5 +1,6 @@
 package org.spring.aop.app;
 
+import org.spring.aop.beans.Account;
 import org.spring.aop.beans.AccountDao;
 import org.spring.aop.config.ApplicationConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,12 +15,12 @@ public class App {
 		AccountDao accountDao = applicationContext.getBean(AccountDao.class);
 		
 		// should call the @Before advise before calling the addAccount() method
-		accountDao.addAccount();
+		accountDao.addAccount(new Account(), true);
 		
 		System.out.println("\n call it again >>> ");
 		
 		// should call the @Before advise again before calling the addAccount() method
-		accountDao.addAccount();
+		accountDao.addAccount(new Account(), false);
 		
 		applicationContext.close();
 	}
