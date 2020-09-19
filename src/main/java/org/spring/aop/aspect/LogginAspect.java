@@ -5,10 +5,12 @@ import java.util.logging.Logger;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(4)
 public class LogginAspect {
 
 	Logger logger = Logger.getLogger(getClass().toString());
@@ -46,7 +48,7 @@ public class LogginAspect {
 //	@Before("execution(* org.spring.aop.beans.*.*(..))") // match any modifier (optional), any return type, any method in any class with 0 or more params of any type in specific package
 	@Before("execution(* *(..))") // match any modifier (optional), any return type, any method in any class with 0 or more params of any type
 	private void before() {
-		System.out.println("\n >>>>>> @Before advise execution org.spring.aop.beans.AccountDao.addAccount()");
+		System.out.println("\n >>>>>> @Before advise execution all Methods");
 	}
 	
 	
