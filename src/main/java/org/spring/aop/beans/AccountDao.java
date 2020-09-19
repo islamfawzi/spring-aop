@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class AccountDao {
 	
 	public void addAccount(Account account, boolean flag) {
-		System.out.println(getClass() + ".addAccount() Called!");
+		System.out.println("\n" + getClass() + ".addAccount() Called!");
 	}
 }
