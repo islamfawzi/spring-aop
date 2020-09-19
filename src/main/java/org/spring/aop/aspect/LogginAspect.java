@@ -46,7 +46,6 @@ public class LogginAspect {
 //	@Before("execution(* org.spring.aop.beans.*.*(..))") // match any modifier (optional), any return type, any method in any class with 0 or more params of any type in specific package
 	@Before("execution(* *(..))") // match any modifier (optional), any return type, any method in any class with 0 or more params of any type
 	private void before() {
-		
 		System.out.println("\n >>>>>> @Before advise execution org.spring.aop.beans.AccountDao.addAccount()");
 	}
 	
@@ -55,12 +54,39 @@ public class LogginAspect {
 	 * PointCut declaration 
 	 * can be reused with many advises 
 	 **/
-	@Pointcut("execution(* *(..))")
+	@Pointcut("execution(* org.spring.aop.beans.AccountDao.addAccount(..))")
 	private void allMethodsWithAnyParams() {}
 	
 	@Before("allMethodsWithAnyParams()")
 	private void usingPountutDeclaration() {
-		
-		System.out.println("\n >>>>>> @Before Advise, using PointCut Declaration");
+		System.out.println("\n >>>>>> @Before Advise, using PointCut Declaration, AccountDao.addAccount()");
+	}
+	
+	/**
+	 * Combine PointCuts
+	 * PointCuts act as if condition
+	 */
+	@Pointcut("execution(* org.spring.aop.beans.Account.set*(..))")
+	private void setter() {}
+	
+	@Pointcut("execution(* org.spring.aop.beans.Account.get*(..))")
+	private void getter() {}
+	
+	@Before("setter()")
+	private void beforeAllSetterMethods() {
+		System.out.println("\n >>>>>> @Before Advise, setter methods");
+	}
+	
+	@Before("getter()")
+	private void beforeAllGetterMethods() {
+		System.out.println("\n >>>>>> @Before Advise, getter methods");
+	}
+	
+	@Pointcut("execution(* *(..))")
+	private void allMethods() {}
+	
+	@Before("allMethods() && !(getter() || setter())")
+	private void allMethodsExceptionGettersAndSetters() {
+		System.out.println("\n >>>>>> @Before Advise, allMethodsExceptionGettersAndSetters");
 	}
 }

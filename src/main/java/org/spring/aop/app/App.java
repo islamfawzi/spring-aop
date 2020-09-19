@@ -12,15 +12,20 @@ public class App {
 		AnnotationConfigApplicationContext applicationContext = 
 				new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		
-		AccountDao accountDao = applicationContext.getBean(AccountDao.class);
+		AccountDao accountDao = applicationContext.getBean("accountDao", AccountDao.class);
+		
+		Account account = applicationContext.getBean("account", Account.class);
+		account.setId(9999);
+		account.setAccountNum("123456789");
+		
 		
 		// should call the @Before advise before calling the addAccount() method
-		accountDao.addAccount(new Account(), true);
+		accountDao.addAccount(account, true);
 		
-		System.out.println("\n call it again >>> ");
-		
-		// should call the @Before advise again before calling the addAccount() method
-		accountDao.addAccount(new Account(), false);
+//		System.out.println("\n call it again >>> ");
+//		
+//		// should call the @Before advise again before calling the addAccount() method
+//		accountDao.addAccount(account, false);
 		
 		applicationContext.close();
 	}
