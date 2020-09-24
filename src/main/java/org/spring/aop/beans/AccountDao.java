@@ -18,4 +18,8 @@ public class AccountDao {
 		System.out.println("\n" + getClass() + ".getAccount() Called!");
 		return account;
 	}
+	
+	public void throwException() {
+		throw new RuntimeException("Manual thrown exception");
+	}
 }

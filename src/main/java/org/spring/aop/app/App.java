@@ -30,6 +30,10 @@ public class App {
 		/** trigger @afterReturning advise **/
 		Account acc = accountDao.getAccount();
 		
+		/** trigger @afterThrowing advise **/
+		try { accountDao.throwException(); }
+		catch(RuntimeException ex) {}
+		
 		applicationContext.close();
 	}
 
