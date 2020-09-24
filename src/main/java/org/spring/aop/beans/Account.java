@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Account {
 
 	private int id;
-	private String accountNum;
+	private String name;
 
 	public int getId() {
 		return id;
@@ -18,12 +18,17 @@ public class Account {
 		this.id = id;
 	}
 
-	public String getAccountNum() {
-		return accountNum;
+	public String getName() {
+		return name;
 	}
 
-	public void setAccountNum(String accountNum) {
-		this.accountNum = accountNum;
+	public void setname(String name) {
+		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Account [id=%s, name=%s]", id, name);
+	}
+	
 }

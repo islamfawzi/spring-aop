@@ -16,7 +16,7 @@ public class App {
 		
 		Account account = applicationContext.getBean("account", Account.class);
 		account.setId(9999);
-		account.setAccountNum("123456789");
+		account.setname("islam");
 		
 		
 		// should call the @Before advise before calling the addAccount() method
@@ -26,6 +26,9 @@ public class App {
 //		
 //		// should call the @Before advise again before calling the addAccount() method
 //		accountDao.addAccount(account, false);
+		
+		/** trigger @afterReturning advise **/
+		Account acc = accountDao.getAccount();
 		
 		applicationContext.close();
 	}

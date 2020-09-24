@@ -54,12 +54,12 @@ public class LogginAspect {
 		
 		/** getting method signature using JoinPoint **/
 		MethodSignature methodSignature = (MethodSignature) joinpoint.getSignature();
-		System.out.println("\n >>>>>> Method Signature: " + methodSignature);
+		System.out.println("\n >>>>>> @Before Method Signature: " + methodSignature);
 		
 		/** getting method arguments using JoinPoint **/
 		Object[] args = joinpoint.getArgs();
 		for (Object arg : args) {
-			System.out.println("\n >>>>>> Method arg: " + arg);
+			System.out.println("\n >>>>>> @Before Method arg: " + arg);
 		}
 	}
 	

@@ -5,9 +5,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountDao {
 	
+	Account account;
+	
 	public void addAccount(Account account, boolean flag) {
+		this.account = account;
 		account.getId();
-		account.getAccountNum();
+		account.getName();
 		System.out.println("\n" + getClass() + ".addAccount() Called!");
+	}
+	
+	public Account getAccount() {
+		System.out.println("\n" + getClass() + ".getAccount() Called!");
+		return account;
 	}
 }
