@@ -2,9 +2,11 @@ package org.spring.aop.aspect;
 
 import java.util.logging.Logger;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -47,8 +49,18 @@ public class LogginAspect {
 //	@Before("execution(* *(org.spring.aop.beans.Account, ..))") // match any modifier (optional), any return type, any method in any class with 1st param of Account type and any number of other params of any types
 //	@Before("execution(* org.spring.aop.beans.*.*(..))") // match any modifier (optional), any return type, any method in any class with 0 or more params of any type in specific package
 	@Before("execution(* *(..))") // match any modifier (optional), any return type, any method in any class with 0 or more params of any type
-	private void before() {
+	private void before(JoinPoint joinpoint) {
 		System.out.println("\n >>>>>> @Before advise execution all Methods");
+		
+		/** getting method signature using JoinPoint **/
+		MethodSignature methodSignature = (MethodSignature) joinpoint.getSignature();
+		System.out.println("\n >>>>>> Method Signature: " + methodSignature);
+		
+		/** getting method arguments using JoinPoint **/
+		Object[] args = joinpoint.getArgs();
+		for (Object arg : args) {
+			System.out.println("\n >>>>>> Method arg: " + arg);
+		}
 	}
 	
 	
