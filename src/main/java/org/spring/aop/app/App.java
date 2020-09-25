@@ -27,10 +27,10 @@ public class App {
 //		// should call the @Before advise again before calling the addAccount() method
 //		accountDao.addAccount(account, false);
 		
-		/** trigger @afterReturning advise **/
+		/** trigger @AfterReturning, @After advise **/
 		Account acc = accountDao.getAccount();
 		
-		/** trigger @afterThrowing advise **/
+		/** trigger @AfterThrowing, @After advise **/
 		try { accountDao.throwException(); }
 		catch(RuntimeException ex) {}
 		
