@@ -34,6 +34,10 @@ public class App {
 		try { accountDao.throwException(); }
 		catch(RuntimeException ex) {}
 		
+		/** trigger @Around advise **/
+		String accountStatus = accountDao.getAccountStatus();
+		System.out.println("\n MainApp >>>> Account Status: " + accountStatus);
+		
 		applicationContext.close();
 	}
 

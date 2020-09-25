@@ -1,5 +1,7 @@
 package org.spring.aop.beans;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,5 +23,13 @@ public class AccountDao {
 	
 	public void throwException() {
 		throw new RuntimeException("Manual thrown exception");
+	}
+	
+	public String getAccountStatus() {
+		
+		try { TimeUnit.SECONDS.sleep(5); }
+		catch (InterruptedException e) {}
+		
+		return "Account is active";
 	}
 }
