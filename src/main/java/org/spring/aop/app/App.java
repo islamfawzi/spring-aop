@@ -38,6 +38,10 @@ public class App {
 		String accountStatus = accountDao.getAccountStatus();
 		System.out.println("\n MainApp >>>> Account Status: " + accountStatus);
 		
+		/** handle exception with @Around advise **/
+		String result = accountDao.throwExceptionAndReturn(true);
+		System.out.println("\n MainApp >>>> throwExceptionAndReturn Result: " + result);
+		
 		applicationContext.close();
 	}
 

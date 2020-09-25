@@ -25,6 +25,13 @@ public class AccountDao {
 		throw new RuntimeException("Manual thrown exception");
 	}
 	
+	public String throwExceptionAndReturn(boolean throwExcetion) {
+		
+		if(throwExcetion) throw new RuntimeException("Manual thrown exception");
+		
+		return "Hello";
+	}
+	
 	public String getAccountStatus() {
 		
 		try { TimeUnit.SECONDS.sleep(5); }
